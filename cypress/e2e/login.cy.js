@@ -9,4 +9,3 @@ it("POM Demo",()=>{
     LoginPage.enterPassword('admin123')
     LoginPage.clickLogin()
 })
-
