@@ -1,19 +1,34 @@
-import {loginPage} from './pages/login_page'
+import { loginPage } from "./pages/login_page";
 
-const LoginPage=new loginPage()
+const LoginPage = new loginPage();
 
-it("login test 1",()=>{
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-
-    LoginPage.enterUserName('Admin')
-    LoginPage.enterPassword('admin123')
-    LoginPage.clickLogin()
+beforeEach(()=>{
+    cy.visit(
+        "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
+      );
 })
 
-it("login test 2",()=>{
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+describe("All login test", () => {
 
-    LoginPage.enterUserName('Admin')
-    LoginPage.enterPassword('admin123')
-    LoginPage.clickLogin()
-})
+    
+
+  it("login with correct credentials", () => {
+   
+
+    LoginPage.enterUserName("Admin");
+    LoginPage.enterPassword("admin123");
+    LoginPage.clickLogin();
+
+    cy.get('.oxd-chart-legend > :nth-child(5) > .oxd-text').click()
+  });
+
+  it("Skip the test", () => {
+    cy.visit(
+      "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
+    );
+
+    LoginPage.enterUserName("Admin");
+    LoginPage.enterPassword("admin123");
+    LoginPage.clickLogin();
+  });
+});
