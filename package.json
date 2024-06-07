@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "cypress.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "echo I am PreTest",
+    "posttest": "echo I am PostTest",
+    "test": "echo I am the Test",
+    "cy-test":"cypress run"
   },
   "author": "",
   "license": "ISC",
