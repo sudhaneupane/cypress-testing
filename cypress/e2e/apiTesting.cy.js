@@ -1,15 +1,22 @@
-// it("Test POST Request", () => {
-//     cy.request({
-//         method: 'POST',
-//         url: 'https://api.nnine.training/api/v1/dashboard/registerDetails',
-//         body: {
-//             'id': 2,
-//             'title': 'Automation'
-//         }
-//     }).then((response) => { 
-//         expect(response.body).to.have.property('title', 'Automation'); 
-//     });
-// });
+it("Test POST Request", () => {
+    cy.request({
+        method: 'POST',
+        url: 'https://api.nnine.training/api/v1/dashboard/registerDetails',
+        body: {
+            'email': "hellotest.@gmail.com",
+            'name': 'Hello World',
+            'phone':'9857452155',
+            "levelOfEducation":"Bachelor's Degree",
+            "courses":["MERN"],
+            "schoolCollegeName":"Example University",
+            "message":"Looking forward to starting the new semester!",
+            
+        }
+    })
+    .then((response) => { 
+        expect(response.status).to.eq(200); 
+    });
+});
 
 describe("Testing API Endpoints Using Cypress", () => {
 
@@ -17,10 +24,15 @@ describe("Testing API Endpoints Using Cypress", () => {
         cy.request('https://api.nnine.training/api/v1/dashboard/registerDetails')
             .then((response) => {
                 expect(response.status).to.eq(201);
-                // expect(response.body.data[0].title).to.equal('Expected Title');
+
+                // cy.log(JSON.stringify(response.body));
                 expect(response.body).to.be.an('array');
-                expect(response.body[0]).to.have.property('email');
-                // expect(response.body[0].email).to.equal('johncena.doe@example.com');
+                
+                response.body.forEach(user => {
+                    expect(user).to.have.property('email');
+                    // cy.log(`Found email: ${user.email}`);
+                    cy.log("hellotest.@gmail.com")
+                });
             });
     });
 });
