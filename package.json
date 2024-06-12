@@ -6,12 +6,15 @@
     "pretest": "echo I am PreTest",
     "posttest": "echo I am PostTest",
     "test": "echo I am the Test",
-    "cy-test":"cypress run"
+    "cy-test": "cypress run"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "cypress": "^13.10.0"
+  },
+  "devDependencies": {
+    "cypress-file-upload": "^5.0.8"
   }
 }
